@@ -46,6 +46,7 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& start_pos, const wxSi
 
     // FILE
   auto* menu_file = new wxMenu;
+  menu_file->Append(wxID_NEW);
   menu_file->Append(wxID_OPEN);
   menu_file->Append(wxID_EXIT);
 

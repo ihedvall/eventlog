@@ -5,7 +5,7 @@
 !include x64.nsh
 !include FileFunc.nsh
  
-Name "Event Log Applications"
+Name "Event Log Applications 1.0"
 OutFile "..\cmake-build-release\eventlog_setup.exe"
 Unicode True
 

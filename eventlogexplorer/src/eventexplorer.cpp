@@ -53,8 +53,8 @@ bool EventExplorer::OnInit() {
   // The log file will be in %TEMP%/report_server/mdf_viewer.log
   auto& log_config = LogConfig::Instance();
   log_config.Type(LogType::LogToFile);
-  log_config.SubDir("eventlog");
-  log_config.BaseName("event_log_explorer");
+  log_config.SubDir("eventlog/log");
+  log_config.BaseName("eventlogexplorer");
   log_config.CreateDefaultLogger();
   LOG_TRACE() << "Log File created. Path: " << log_config.GetLogFile();
 

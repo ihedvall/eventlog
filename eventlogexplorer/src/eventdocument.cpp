@@ -9,11 +9,13 @@
 #include <wx/msgdlg.h>
 #include "eventdocument.h"
 #include "eventexplorer.h"
-#include "util/logstream.h"
+#include <util/logstream.h>
+#include <util/utilfactory.h>
 #include "windowid.h"
 
-using namespace util::log;
 
+using namespace util::log;
+using namespace util::syslog;
 
 
 namespace eventlog {
@@ -21,6 +23,16 @@ wxIMPLEMENT_DYNAMIC_CLASS(EventDocument, wxDocument) // NOLINT
 
 wxBEGIN_EVENT_TABLE(EventDocument, wxDocument) // NOLINT
 wxEND_EVENT_TABLE()
+
+bool EventDocument::OnNewDocument() {
+  auto temp = util::UtilFactory::CreateSyslogServer(
+      SyslogServerType::TcpSubscriber);
+  if (!temp) {
+    return false;
+  }
+
+  return true;
+}
 
 bool EventDocument::OnOpenDocument(const wxString &filename) {
 
@@ -33,4 +45,5 @@ bool EventDocument::OnOpenDocument(const wxString &filename) {
   }
   return parse && wxDocument::OnOpenDocument(filename);
 }
+
 } // namespace eventlog
