@@ -11,7 +11,7 @@ add_executable(eventlogd src/eventlogd.cpp src/eventlogserver.cpp src/eventlogse
 target_include_directories(eventlogd PRIVATE ${Boost_INCLUDE_DIRS})
 target_include_directories(eventlogd PRIVATE ${utillib_SOURCE_DIR}/include)
 target_include_directories(eventlogd PRIVATE ${workflowlib_SOURCE_DIR}/include)
-target_include_directories(eventlogd PRIVATE ${workflowapp_SOURCE_DIR}/src)
+target_include_directories(eventlogd PRIVATE ${workflowapp_SOURCE_DIR}/include)
 
 target_compile_definitions(eventlogd PRIVATE XML_STATIC)
 
@@ -36,6 +36,13 @@ target_link_libraries(eventlogd PRIVATE ${PostgreSQL_LIBRARY_DIRS}/libpgtypes.li
 target_link_libraries(eventlogd PRIVATE ${PostgreSQL_LIBRARY_DIRS}/libpgport.lib)
 target_link_libraries(eventlogd PRIVATE ${PostgreSQL_LIBRARY_DIRS}/libpgcommon.lib)
 target_link_libraries(eventlogd PRIVATE ${OPENSSL_LIBRARIES})
+target_link_libraries(eventlogd PRIVATE ${Protobuf_LIBRARIES})
+target_link_libraries(eventlogd PRIVATE ${Protobuf_PROTOC_LIBRARIES})
+target_link_libraries(eventlogd PRIVATE absl::log)
+target_link_libraries(eventlogd PRIVATE absl::log_internal_check_op)
+target_link_libraries(eventlogd PRIVATE utf8_range::utf8_range)
+target_link_libraries(eventlogd PRIVATE utf8_range::utf8_validity)
+target_link_libraries(eventlogd PRIVATE gRPC::grpc++)
 
 if (WIN32)
     #target_link_libraries(eventlogd PRIVATE iconv)

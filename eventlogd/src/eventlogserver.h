@@ -5,7 +5,7 @@
 
 #pragma once
 #include <string>
-#include <genericworkflowserver.h>
+#include <workflow/genericworkflowserver.h>
 namespace eventlog {
 
 class EventLogServer : public workflow::GenericWorkflowServer {

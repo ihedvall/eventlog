@@ -20,6 +20,8 @@ include(script/boost.cmake)
 include(script/postgresql.cmake)
 include(script/openssl.cmake)
 include(script/sqlite3.cmake)
+include(script/protobuf.cmake)
+include(script/grpc.cmake)
 
 add_subdirectory(eventlogd)
 add_subdirectory(eventlogexplorer)
